@@ -27,9 +27,9 @@ app.configure('production', function(){
 
 
 //Classes here
-var getPoints = require('./getpoints.js'), 
-    gSats = require('./getGdocsJson.js'),
-    calcDistance = require('./calcDist.js')
+var getPoints = require(__dirname + '/getPoints.js'), 
+    gSats = require(__dirname + '/getGdocsJson.js'),
+    calcDistance = require(__dirname + '/calcDist.js')
 
 //Routes
 app.get('/sat/:id/:lat?/:lng?/:dur?/:tz?', function(req, res){
@@ -40,6 +40,7 @@ app.get('/sat/:id/:lat?/:lng?/:dur?/:tz?', function(req, res){
         tz = req.params.tz || '-3'; 
     console.term('cyan','Requested: ' + 'SAT: '+sat + ' LAT: '+lat + ' LNG: '+lng + ' DUR: '+dur + ' TZ: '+tz)
     getPoints.getSatPoints(sat, lat, lng, dur, tz, function(data){
+	res.header('Access-Control-Allow-Origin','*')
         res.json(data);
     });
 });
@@ -48,6 +49,7 @@ app.get('/orbit/:id', function(req, res){
     var sat = req.params.id;
     console.term('cyan','Requested: ' + 'SAT: '+sat)
     getPoints.getOrbitPoints(sat, function(data){
+	res.header('Access-Control-Allow-Origin','*')
         res.json(data);
     });
 });
@@ -72,10 +74,12 @@ app.get('/near/:lat?/:lng?/:tz?', function(req, res){
         getPoints.getSatPoints(d[sat].id, lat, lng, 3, tz, function(data, id){
               i++
               console.log(sat, i)
-              var candidate = {satId: id, distance: +calcDistance(data[0][0], data[0][1], lat, lng)}
+              var candidate = {"satId": id, "distance": +calcDistance(data[0][0], data[0][1], lat, lng)}
               candidates.push(candidate)
-              if(i === 12){
+              if(i === 14){
                 responded = true
+		res.header('Access-Control-Allow-Origin','*')
+		console.log(candidates)
                 res.json(candidates)
               }
         })
@@ -84,6 +88,7 @@ app.get('/near/:lat?/:lng?/:tz?', function(req, res){
 
       setTimeout(function(){
         if(!responded){
+	  res.header('Access-Control-Allow-Origin','*')
           res.json({error: 'Not enough data retrieved.'})
         }
       },10000)
@@ -93,4 +98,4 @@ app.get('/near/:lat?/:lng?/:tz?', function(req, res){
 });
 
 
-app.listen(3000);
+app.listen(3003);
