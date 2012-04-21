@@ -1,0 +1,5 @@
+h1{text-align:center;}
+.grid_12{margin-bottom:20px;}
+.grid_4{font-size:15px;}
+	.grid_4 li{margin-bottom:10px;}
+	.grid_4 > .grid_4{margin-bottom:10px;}
