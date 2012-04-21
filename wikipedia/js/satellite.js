@@ -47,9 +47,9 @@ var Satellites = function( cb ){
 var wikipedia = {
 	wikiSearch : function( title,callback ){
 		var wikiQuery = "//en.wikipedia.org/w/api.php?action=query&prop=revisions&titles="
-		+ title.replace(" ","") +"&rvprop=timestamp|user|comment|content&format=json&callback=?";
+		+ encodeURI(title.replace(" ","")) +"&rvprop=timestamp|user|comment|content&format=json&callback=?";
 		$.getJSON( wikiQuery,function( data ){
-				if ( callback ){ callback(data.query.pages, title); }
+				if ( callback ){ callback(data.query.pages, encodeURI(title)); }
 			}                                                                                                                                                                      
 		);
 	}
