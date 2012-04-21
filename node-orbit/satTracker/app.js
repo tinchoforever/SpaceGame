@@ -89,7 +89,7 @@ app.get('/near/:lat?/:lng?/:tz?', function(req, res){
       setTimeout(function(){
         if(!responded){
 	  res.header('Access-Control-Allow-Origin','*')
-          res.json({error: 'Not enough data retrieved.'})
+          res.json([{error: 'Not enough data retrieved.'}])
         }
       },10000)
 
