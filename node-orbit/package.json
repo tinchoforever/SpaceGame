@@ -1,0 +1,10 @@
+{
+  "name": "node-orbits",
+  "version": "0.0.1",
+  "description": "A few services to get the orbit and sat points of a given satellite",
+  "author": "Bruno",
+  "dependencies": {
+    "request": ">= 0.0.0",
+    "optimist": ">= 0.1.0"
+  }
+}
