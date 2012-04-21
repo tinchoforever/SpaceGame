@@ -1,0 +1,10 @@
+h1{
+	text-align:center;
+}
+.container, .satellite-checkin-list{
+	margin-top:20px;
+	width:450px;
+}
+.satellite-checkin-list td{
+	cursor:pointer;
+}
