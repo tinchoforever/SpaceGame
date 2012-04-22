@@ -7,13 +7,13 @@ $id = $_POST["satelliteId"];
 $userId = $_POST["userId"];
 
 if($userId){
-	$query = "select * from spaceObjects_users where soid= '$id' and uid = '$userId'";
+	$query = "select * from spaceobjects_users where soid= '$id' and uid = '$userId'";
 	$result = $mysql->query($query);
 	if( !$result ){ die('error: ' . $mysql->error); }	
 
 	$row = $result->fetch_assoc();
 	if(!$row){
-		$query = "insert into spaceObjects_users (soid, uid) values ('$id', '$userId')";
+		$query = "insert into spaceobjects_users (soid, uid) values ('$id', '$userId')";
 		$result = $mysql->query($query);
 		if( !$result ){ die('error: ' . $mysql->error); }	
 	}
@@ -23,7 +23,7 @@ if($userId){
 	if( !$result ){ die('error:' . $mysql->error); }	
 }
 
-$query = "SELECT * FROM spaceObjects WHERE id = '$id'";
+$query = "SELECT * FROM spaceobjects WHERE id = '$id'";
 $result = $mysql->query($query);
 if( !$result ){ die('error' . $mysql->error); }
 
@@ -50,7 +50,7 @@ while ($row = $result->fetch_assoc()) {
 	<p>
 		<ul>
 	<?
-		$query = "SELECT * FROM users WHERE id in (SELECT uid FROM spaceObjects_users WHERE soid = '$id')";		
+		$query = "SELECT * FROM users WHERE id in (SELECT uid FROM spaceobjects_users WHERE soid = '$id')";		
 		$users = $mysql->query($query);
 		if( !$users ){ die('error' . $mysql->error); }
 
