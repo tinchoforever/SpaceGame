@@ -23,7 +23,7 @@ if($userId){
 	if( !$result ){ die('error:' . $mysql->error); }	
 }
 
-$query = "SELECT * FROM spaceobjects WHERE id = '$id'";
+$query = "SELECT * FROM spaceObjects WHERE id = '$id'";
 $result = $mysql->query($query);
 if( !$result ){ die('error' . $mysql->error); }
 
