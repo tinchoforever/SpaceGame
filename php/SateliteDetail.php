@@ -37,6 +37,7 @@ $satellite = $result->fetch_assoc();
 		<link rel="stylesheet" type="text/css" href="css/960.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/data.css" />
+		<link rel="stylesheet" href="css/nasa.css" media="screen" />
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -44,16 +45,16 @@ $satellite = $result->fetch_assoc();
 	</head>
 <body>
 	
-	<div class="container_12">
-			<section class="grid_12">
-				<div id="satmap" style="width: 100%; height: 250px; border: 1px solid #999999">&nbsp;</div>
-				<h1>Satellite</h1>
-			</section>
-			<section class="grid_12">
-				<div class="grid_4 alpha">
+	<div id="checkin" class="container separated container_12">
+			
+			<h1><?echo $satellite["name"]?></h1>		
+			<h3>You have been Beamed up!</h3>		
+			<div id="satmap" class="container" style="width: 100%; height: 250px; border: 1px solid #999999">&nbsp;</div>
+			<section class="grid_12 span2">
+				<div class="span2 grid_4 alpha">
 					<h2>Wikipedia</h2>
 				</div>
-				<div class="grid_4">
+				<div class="span2 grid_4">
 					<h2>Crew</h2>
 					<ul>
 						<?
@@ -73,7 +74,7 @@ $satellite = $result->fetch_assoc();
 						?>							
 					</ul>
 				</div>
-				<div class="grid_4 omega">
+				<div class="span2 grid_4 omega">
 					<h2>Photos</h2>
 				</div>
 			</section>
